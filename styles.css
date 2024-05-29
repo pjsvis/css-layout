@@ -1,0 +1,51 @@
+@layer reset, theme, layout, demo;
+
+/*
+Add open-props
+*/
+
+@layer demo {
+    div {
+      aspect-ratio: 2 / 1;
+      background-color: var(--pink-3);
+      padding: 1em;
+    }
+  }
+
+@layer reset {
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+  
+    body {
+      margin: 1em;
+    }
+  }
+
+  @layer theme {
+    :root {
+      --layout-fluid-min: 35ch;
+      --layout-default-repeat: 3;
+      --layout-default-gap: 3vmax;
+    }
+  }
+
+  @layer layout {  
+    .repeating-grid {
+        --_grid-repeat: var(--grid-repeat, var(--layout-default-repeat));
+        --_repeating-grid-gap: var(--grid-gap, var(--layout-default-gap));
+      
+        display: grid;
+        grid-template-columns: repeat(var(--_grid-repeat), 1fr);
+        gap: var(--_repeating-grid-gap);
+      }
+      
+    .repeating-flex {}
+    .fluid-grid {}
+    .fluid-flex {}
+  
+    .subgrid-rows {}
+  }
+
